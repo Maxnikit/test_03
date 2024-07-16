@@ -1,0 +1,26 @@
+/* Base style MOBILE FIRST */
+.card {
+  height: 100%;
+  width: calc(50% - 10px);
+}
+
+/* Tablet */
+@media (min-width: $mantine-breakpoint-sm) {
+  .card {
+    width: calc(30% - 20px);
+  }
+}
+
+/* Desktop */
+@media (min-width: $mantine-breakpoint-md) {
+  .card {
+    width: calc(25% - 20px);
+  }
+}
+
+/* Huge desktop */
+@media (min-width: $mantine-breakpoint-lg) {
+  .card {
+    min-width: calc(20% - 20px);
+  }
+}
