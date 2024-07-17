@@ -5,6 +5,7 @@ import {
   Divider,
   Group,
   Image,
+  Stack,
   Text,
 } from "@mantine/core";
 import { User } from "../../types";
@@ -22,19 +23,21 @@ export function UserCard(user: User) {
       <Card.Section>
         <Image src={getAvatar(user.id)} height="100%" alt="Avatar" />
       </Card.Section>
-
-      <Text size="lg" fw={600}>
-        {user.username}
-      </Text>
-      <Divider mb="sm" />
-      <Text>{fullName}</Text>
-      <Text size="sm">
-        Email: <Text component="span">{user.email}</Text>
-      </Text>
-
-      <Text size="sm">
-        Phone: <Text component="span">{user.phone}</Text>
-      </Text>
+      <Stack gap={5}>
+        <Text size="lg" fw={600}>
+          {user.username}
+        </Text>
+        <Divider mb="sm" />
+        <Text fs="italic" size="lg">
+          {fullName}
+        </Text>
+        <Text>
+          Email: <Text component="span">{user.email}</Text>
+        </Text>
+        <Text>
+          Phone: <Text component="span">{user.phone}</Text>
+        </Text>
+      </Stack>
     </Card>
   );
 }

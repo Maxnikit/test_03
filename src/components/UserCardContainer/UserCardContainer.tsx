@@ -25,7 +25,7 @@ export function UserCardContainer() {
   }
 
   return (
-    <Flex wrap="wrap" gap="md">
+    <Flex justify="space-between" wrap="wrap" rowGap="20px">
       {data.map((user) => (
         <UserCard {...user} key={user.id} />
       ))}
