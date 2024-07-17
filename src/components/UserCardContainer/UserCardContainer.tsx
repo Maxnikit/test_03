@@ -3,14 +3,23 @@ import { User } from "../../types";
 import { UserCard } from "../UserCard/UserCard";
 import { getUsers } from "../../api/users";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { useStore } from "../../lib/store";
 
 export function UserCardContainer() {
+  const { updateUsers } = useStore();
   const { data, isLoading, isError, error } = useQuery<User[], Error>({
     queryKey: ["usersData"],
     queryFn: getUsers,
   });
 
   console.log(data);
+
+  useEffect(() => {
+    if (data) {
+      updateUsers(data);
+    }
+  }, [data, updateUsers]);
 
   if (isLoading) {
     return <div>Loading</div>;
