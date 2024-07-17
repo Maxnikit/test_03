@@ -8,5 +8,15 @@ export type User = {
     firstname: string;
     lastname: string;
   };
-  avatar: string;
+  address: {
+    geolocation: {
+      lat: string;
+      long: string;
+    };
+    city: string;
+    street: string;
+    number: number;
+    zipcode: string;
+  };
+  __v?: number;
 };
