@@ -16,3 +16,5 @@ function App() {
 }
 
 export default App;
+
+// TODO either add react router for displaying info about selected user or find another way
