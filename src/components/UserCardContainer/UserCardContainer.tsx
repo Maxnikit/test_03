@@ -17,7 +17,11 @@ export function UserCardContainer() {
   }
 
   if (isError) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <div>
+        Oops. Could not get users. Here is error message: {error.message}
+      </div>
+    );
   }
 
   if (!data || data.length === 0) {
@@ -25,7 +29,7 @@ export function UserCardContainer() {
   }
 
   return (
-    <Flex justify="space-between" wrap="wrap" rowGap="20px">
+    <Flex justify="center" wrap="wrap" gap="md">
       {data.map((user) => (
         <UserCard {...user} key={user.id} />
       ))}
