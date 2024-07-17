@@ -9,6 +9,3 @@ export function getAvatar(id: number) {
   const svg = avatar.toDataUri();
   return svg;
 }
-export function makeFirstLetterUppercase(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}

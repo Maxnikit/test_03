@@ -11,13 +11,9 @@ import {
 import { User } from "../../types";
 import styles from "./UserCard.module.css";
 
-import { getAvatar, makeFirstLetterUppercase } from "../../lib/lib";
+import { getAvatar } from "../../lib/lib";
 
 export function UserCard(user: User) {
-  const fullName = `${makeFirstLetterUppercase(
-    user.name.firstname
-  )} ${makeFirstLetterUppercase(user.name.lastname)}`;
-
   return (
     <Card withBorder shadow="sm" p="sm" radius="md" className={styles.card}>
       <Card.Section>
@@ -28,9 +24,7 @@ export function UserCard(user: User) {
           {user.username}
         </Text>
         <Divider mb="sm" />
-        <Text fs="italic" size="lg">
-          {fullName}
-        </Text>
+
         <Text>
           Email: <Text component="span">{user.email}</Text>
         </Text>
