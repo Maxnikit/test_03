@@ -1,5 +1,5 @@
 import "./App.css";
-import { fetchUsers } from "./api/users";
+import { fetchUsers, getUsers } from "./api/users";
 import { useQuery } from "@tanstack/react-query";
 import { UserCard } from "./components/UserCard/UserCard";
 import { Flex, Group, Stack } from "@mantine/core";
@@ -7,12 +7,30 @@ import { Flex, Group, Stack } from "@mantine/core";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { Outlet } from "react-router-dom";
 import { HomeButton } from "./components/HomeButton/HomeButton";
+import { useEffect } from "react";
+import { useStore } from "./lib/store";
+import { User } from "./types";
 
 function App() {
+  const { updateUsers } = useStore();
+  const { data } = useQuery<User[], Error>({
+    queryKey: ["usersData"],
+    queryFn: getUsers,
+  });
+
+  useEffect(() => {
+    if (data) {
+      updateUsers(data);
+    }
+  }, [data, updateUsers]);
+
   return (
     <Stack>
-      <Group>
-        <HomeButton /> <SearchBar />
+      <Group w={"100%"}>
+        <HomeButton />
+        <div style={{ flex: 1 }}>
+          <SearchBar />
+        </div>
       </Group>
 
       <Outlet />
