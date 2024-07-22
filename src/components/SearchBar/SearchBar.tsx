@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { InputBase, Combobox, useCombobox, Input } from "@mantine/core";
+import { useEffect, useState } from "react";
+import { InputBase, Combobox, useCombobox, Input, Button } from "@mantine/core";
 import { User } from "../../types"; // Assuming you have a User type defined
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 // Assume you have a list of users named users
 const users: User[] = [
@@ -204,23 +205,15 @@ const users: User[] = [
   },
 ];
 
-/**
- * The SearchBar component is a combobox that allows you to search for users in the list.
- * When a user is selected, the combobox will close and the selected user will be set as
- * the value of the input field.
- *
- * @returns A Combobox component
- */
 export function SearchBar() {
   const combobox = useCombobox({
-    // When the dropdown is closed, reset the selected option to null
     onDropdownClose: () => combobox.resetSelectedOption(),
   });
 
   const [value, setValue] = useState<User | null>(null);
   const [search, setSearch] = useState("");
 
-  // If the search string is empty, don't filter the options
+  const navigate = useNavigate();
   const shouldFilterOptions = users.every(
     (user) =>
       user.username !== search && user.email !== search && user.phone !== search
@@ -240,18 +233,16 @@ export function SearchBar() {
       {user.username} - {user.email}
     </Combobox.Option>
   ));
-  console.log(value);
+
   return (
-    /**
-     * The Combobox component is a wrapper around the input field and the dropdown.
-     * It handles the selection of an option and the closing of the dropdown.
-     */
     <Combobox
       store={combobox}
       // When an option is selected, set the value of the input field to the selected user
       onOptionSubmit={(option) => {
         setValue(users.find((user) => user.username === option) || null);
         setSearch(option);
+        const id = users.find((user) => user.username === option)?.id;
+        navigate(`/users/${id}`);
         combobox.closeDropdown();
       }}
     >
