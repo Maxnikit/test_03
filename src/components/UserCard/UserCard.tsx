@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  Divider,
-  Group,
-  Image,
-  Stack,
-  Text,
-} from "@mantine/core";
+import { Card, Divider, Image, Stack, Text } from "@mantine/core";
 import { User } from "../../types";
 import styles from "./UserCard.module.css";
 

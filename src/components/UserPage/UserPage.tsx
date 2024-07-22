@@ -1,11 +1,8 @@
 import { useParams } from "react-router-dom";
-import { User } from "../../types";
-import { useStore } from "../../lib/store";
+
 import { UserCard } from "../UserCard/UserCard";
 import { useQuery } from "@tanstack/react-query";
 import { getUserById } from "../../api/users";
-import { Title, Image } from "@mantine/core";
-import { getAvatar } from "../../lib/lib";
 
 export function UserPage() {
   const { id } = useParams();
@@ -29,6 +26,6 @@ export function UserPage() {
     return <div>User not found</div>;
   }
   console.log(user);
-  const avatar = getAvatar(user.id);
+
   return <UserCard {...user} />;
 }

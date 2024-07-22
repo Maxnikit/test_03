@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { useStore } from "../../lib/store";
 
 export function UserCardContainer() {
-  const { filteredUsers } = useStore();
   const { updateUsers } = useStore();
   const { data, isLoading, isError, error } = useQuery<User[], Error>({
     queryKey: ["usersData"],
