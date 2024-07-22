@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export function HomeButton() {
   const navigate = useNavigate();
   return (
-    <Button variant="outline" color="blue" onClick={() => navigate("/")}>
+    <Button variant="outline" color="dark" onClick={() => navigate("/")}>
       Home
     </Button>
   );

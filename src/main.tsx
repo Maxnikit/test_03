@@ -32,7 +32,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <MantineProvider>
+      <MantineProvider theme={{ primaryColor: "dark" }}>
         <RouterProvider router={router} />
       </MantineProvider>
     </QueryClientProvider>

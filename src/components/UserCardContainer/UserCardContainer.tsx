@@ -8,7 +8,7 @@ import { useStore } from "../../lib/store";
 
 export function UserCardContainer() {
   const { filteredUsers } = useStore();
-  const { updateUsers, updateFilteredUsers } = useStore();
+  const { updateUsers } = useStore();
   const { data, isLoading, isError, error } = useQuery<User[], Error>({
     queryKey: ["usersData"],
     queryFn: getUsers,
@@ -17,9 +17,8 @@ export function UserCardContainer() {
   useEffect(() => {
     if (data) {
       updateUsers(data);
-      updateFilteredUsers(data);
     }
-  }, [data, updateUsers, updateFilteredUsers]);
+  }, [data, updateUsers]);
 
   if (isLoading) {
     return <div>Loading</div>;
@@ -37,13 +36,9 @@ export function UserCardContainer() {
     return <div>No users found</div>;
   }
 
-  if (filteredUsers.length === 0) {
-    return <div>No users found</div>;
-  }
-
   return (
     <Flex justify="center" wrap="wrap" gap="md">
-      {filteredUsers.map((user) => (
+      {data.map((user) => (
         <UserCard {...user} key={user.id} />
       ))}
     </Flex>
