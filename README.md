@@ -7,7 +7,7 @@
 Перед установкой убедитесь, что у вас установлены [Node.js](https://nodejs.org/) и npm.
 
 1. Клонируйте репозиторий:
-   `git clone https://github.com/Maxnikit/test_03.git`
+   ```git clone https://github.com/Maxnikit/test_03.git```
 2. Перейдите в каталог проекта:
    `cd test_03`
 3. Установите зависимости:
