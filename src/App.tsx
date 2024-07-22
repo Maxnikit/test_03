@@ -1,8 +1,8 @@
 import "./App.css";
-import { fetchUsers, getUsers } from "./api/users";
+import { getUsers } from "./api/users";
 import { useQuery } from "@tanstack/react-query";
-import { UserCard } from "./components/UserCard/UserCard";
-import { Flex, Group, Stack } from "@mantine/core";
+
+import { Group, Stack } from "@mantine/core";
 
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { Outlet } from "react-router-dom";
