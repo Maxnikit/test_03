@@ -13,7 +13,7 @@ import { User } from "./types";
 
 function App() {
   const { updateUsers } = useStore();
-  const { data } = useQuery<User[], Error>({
+  const { data, isLoading, isError, error } = useQuery<User[], Error>({
     queryKey: ["usersData"],
     queryFn: getUsers,
   });
@@ -24,6 +24,17 @@ function App() {
     }
   }, [data, updateUsers]);
 
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
+
+  if (isError) {
+    return (
+      <div>
+        Oops. Could not get users. Here is error message: {error.message}
+      </div>
+    );
+  }
   return (
     <Stack>
       <Group w={"100%"}>

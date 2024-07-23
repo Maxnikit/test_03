@@ -10,12 +10,3 @@ export async function getUsers(): Promise<User[]> {
 
   return users;
 }
-
-export async function getUserById(id: number): Promise<User> {
-  const response = await fetch(`https://fakestoreapi.com/users/${id}`);
-  if (!response.ok) {
-    throw new Error("Problem fetching user");
-  }
-  const user: User = await response.json();
-  return user;
-}
