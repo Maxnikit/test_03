@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { UserCard } from "../UserCard/UserCard";
 
 import { useStore } from "../../lib/store";
+import { Center } from "@mantine/core";
 
 export function UserPage() {
   const { getSingleUser } = useStore();
@@ -14,5 +15,9 @@ export function UserPage() {
   }
   console.log(user);
 
-  return <UserCard {...user} />;
+  return (
+    <Center>
+      <UserCard {...user} />
+    </Center>
+  );
 }
