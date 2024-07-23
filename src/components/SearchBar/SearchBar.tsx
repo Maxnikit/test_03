@@ -64,7 +64,6 @@ export function SearchBar() {
             }
           }}
           placeholder="Search user"
-          rightSectionPointerEvents="none"
         />
       </Combobox.Target>
 
