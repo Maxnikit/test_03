@@ -17,3 +17,7 @@
     width: calc(15% - 10px);
   }
 }
+
+.cardActive {
+  border: 5px red solid;
+}
